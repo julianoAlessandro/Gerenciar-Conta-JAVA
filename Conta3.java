@@ -100,9 +100,23 @@ public class Conta3 {
 		   public void adicionarConta(Conta3 novaConta) {
 		        conta.add(novaConta);
 		    }
-		   public void Depositar(int valor) {
+		   public double Depositar(int valor) {
 			  saldo = saldo + valor;
+			  return saldo;
 			  
+		   }
+		   public double  sacar(double valor) {
+			   if(saldo > valor) {
+				   saldo = saldo - valor;
+				   return saldo;
+				   
+				   
+			   }
+			   else {
+				   System.out.println("saldo inválido para sacar");
+			   }
+			return valor;
+			
 		   }
 
 
