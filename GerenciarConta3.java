@@ -1,4 +1,4 @@
-
+package MaterialMarrom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -31,11 +31,12 @@ public class GerenciarConta3 {
 	    	System.out.println("Digite 7 para ver as contas Cadastradas");
 	    	System.out.println("Digite 9 para sair");
 	    	System.out.println("==================================================================");
-	    	
+	    	// preciso resolver o problema de ele não me deixar captar dados depois de um determinado
+	    	//numero de passo isso ocorre na linha 36
 	    	opcao =Integer.parseInt(gc.sc.nextLine());
 	    	
 	    	switch(opcao) {
-	    	//precisam ser chamados a partir de um objeto da propria classe GerenciarConta3
+	    	//precisam ser chamados a partir de um objeto da propria classe GerenciarConta3,ou seja gc
 	    	case 1:
 	    	{
 	    		gc.execCadastrarConta();
@@ -123,26 +124,25 @@ public class GerenciarConta3 {
 	    }
 	   	  	
 	   	  public void execContasCadastradas() {
+	   		System.out.println("=============================Informações do Adminstrador do Banco===================");
+   	  		
 	   			for(int i = 0; i < listConta.size(); i++) {
-	   			System.out.println("=============================Informações do Adminstrador do Banco===================");
-	   	  		System.out.println("O cliente possui um total de"+ i + "Cadastradas no Sistema,endo esses cadastros:"+listConta);
+	   		System.out.println("O cliente possui um total de"+ i + "Cadastradas no Sistema,endo esses cadastros:"+listConta);
 	   	  		
 	   	  	}
 	   		
 	   		
-	   	  }
+	   	  }// fim do metodo cadastrar
 	   	  
 	   	  
 	   	  public void execDepositar() {
-	   	 	for(Conta3 conta : listConta) {
-	   	 		System.out.println("Escolha a o id da conta que deseja depositar:");
-	   	 		String valor = sc.nextLine();  	 		 	
-	   	 		
+	   		System.out.println("Escolha a o id da conta que deseja depositar:");
+   	 		String valor = sc.nextLine();  	 
+	   	 	for(Conta3 conta : listConta) {	   	 			 		   	 		
 	   	 		if (conta.getIdConta().equals(valor)) {
 	   	 			System.out.println("Seu id é:"+ valor);
 	   	 			System.out.println("\nColoque um valor para ser depostiado:");
 	   	 			int depositar = sc.nextInt();  	 			
-	   	 		
 	   	 			System.out.println("\nVoce está depositando um valor de: "+ depositar + "Reais" + conta.Depositar(depositar));
 	   	 		}
 	   	 		else {
@@ -151,9 +151,10 @@ public class GerenciarConta3 {
    			}
 	   	 		
 	   	 	}
+	   	 	// Ele capta os dados e compara atraves do id do  mesmo logo o elemento conta percorre cada
+	   	 	//objeto, e com isso percorre cada atributo e metodo daquele objeto e ai sim ele compara	   		  
 	   		  
-	   		  
-	   	  }// pelo ID!!
+	   	  }// fim do metodo depositar
 	   	  
 	   	  
 	   	  
@@ -173,32 +174,34 @@ public class GerenciarConta3 {
 	   		// por indice
 	   	  
 	   	  public void execSacar() {
+	   		System.out.println("Escolha a o id da conta que deseja sacar:");
+	   		String valor = sc.nextLine();	  
 	   		for(Conta3 conta : listConta) {
 	   	 		//System.out.println("conta: " + conta.getIdConta());
-	   	 		System.out.println("Escolha a o id da conta que deseja sacar:");
-	   	 		//int valor = Integer.valueOf(sc.nextLine());
-	   	 		String valor = sc.nextLine();	   	 		 	
+	   	 	
+	   	 		//int valor = Integer.valueOf(sc.nextLine());   	 	 	 		 	
 	   	 		
 	   	 		if (conta.getIdConta().equals(valor)) {
 	   	 			System.out.println("Seu id é:"+ valor);
 	   	 			System.out.println("\nDigite um valor que voce deseja sacar: ");
 	   	 			int sacar = sc.nextInt();  	 			
-	   	 		
 	   	 			System.out.println("\nVoce está sacando um valor de: "+ sacar + "\nReais" + conta.sacar(sacar));
+	   	 			break;
 	   	 		}
 	   	 		else {
    				System.out.println("Indice invalido");
+   				break;
    				
    			}
 	   		  
 	   	  }
-	   	  }
+	   	  }// fim metodo sacar
 	   	  
 	   	  public void execExibirSaldo() {
-	   		for(Conta3 conta : listConta) {
-	   			System.out.println("Escolha a o id da conta que deseja sacar:");
-	   	 		String valor = sc.nextLine();
-	   	 	if (conta.getIdConta().equals(valor)) {
+	   		System.out.println("Escolha a o id da conta quer gostaria de ver o saldo:");
+	   		String valor = sc.nextLine();
+	   		for(Conta3 conta : listConta) {	   			
+	   	 	 	if (conta.getIdConta().equals(valor)) {
    	 			System.out.println("Seu id é:"+ valor);
    	 			System.out.println("\nLogo o seu saldo é: "+ conta.getSaldo());
    	 			 	 	
@@ -211,7 +214,7 @@ public class GerenciarConta3 {
 	   	 		
 	   	 		
 	   		  
-	   	  }
+	   	  }// fim metodo exibir saldo
 	   
 	   		 
 	   	 
